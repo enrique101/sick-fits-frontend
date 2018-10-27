@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import styled from 'styled-components';
-import Head from 'next/head';
-import Error from './ErrorMessage';
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import styled from "styled-components";
+import Head from "next/head";
+import Error from "./ErrorMessage";
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;
   margin: 2rem auto;
   box-shadow: ${props => props.theme.bs};
-  display:grid;
+  display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  min-height:800px;
+  min-height: 800px;
   img {
     width: 100%;
     height: 100%;
@@ -25,27 +25,27 @@ const SingleItemStyles = styled.div`
 `;
 
 const SINGLE_ITEM_QUERY = gql`
-query SINGLE_ITEM_QUERY($id:ID!){
-    item(where:{id: $id}){
-        id
-        title
-        description
-        largeImage
-        price
+  query SINGLE_ITEM_QUERY($id: ID!) {
+    item(where: { id: $id }) {
+      id
+      title
+      description
+      largeImage
+      price
     }
-}
+  }
 `;
 
 export default class SingleItem extends Component {
   render() {
     return (
-      <Query query={SINGLE_ITEM_QUERY} variables={{id: this.props.id}}>
-        {({error, loading, data})=>{
-          if(error) return <Error errror={error}></Error>
-          if(loading) return <p>Loading</p>
-          if(!data.item) return <p>No Item {this.props.id}</p>
+      <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>
+        {({ error, loading, data }) => {
+          if (error) return <Error errror={error} />;
+          if (loading) return <p>Loading...</p>;
+          if (!data.item) return <p>No Item {this.props.id}</p>;
           const item = data.item;
-          return(
+          return (
             <SingleItemStyles>
               <Head>
                 <title>Sick Fits | {item.title}</title>
@@ -56,9 +56,11 @@ export default class SingleItem extends Component {
                 <p>{item.description}</p>
               </div>
             </SingleItemStyles>
-          ) 
+          );
         }}
       </Query>
-    )
+    );
   }
 }
+
+export { SINGLE_ITEM_QUERY };

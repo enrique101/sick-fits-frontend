@@ -28,6 +28,7 @@ class RequestReset extends Component {
                       variables={this.state}>
                 {(requestReset, { error, loading, called }) => (
                     <Form
+                    data-test="form"
                     method="post"
                     onSubmit={async e => {
                       e.preventDefault();

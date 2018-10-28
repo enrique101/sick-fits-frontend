@@ -16,7 +16,7 @@ describe('<Order />', ()=>{
     it('renders and matches snapshot', async () => {
         const wrapper = mount(
             <MockedProvider mocks={mocks}>
-                <Order id="abc" />
+                <Order id="ord123" />
             </MockedProvider>
             );
         await wait();

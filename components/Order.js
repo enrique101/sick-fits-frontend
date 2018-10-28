@@ -42,7 +42,7 @@ export default class componentName extends Component {
             if(loading) return <p>Loading...</p>
             const { order } = data;
             return(
-                <OrderStyles>
+                <OrderStyles data-test="order">
                     <Head>
                         <title>
                             Sick Fits - Order { order.id }

@@ -74,3 +74,5 @@ export default class TakeMyMoney extends Component {
     );
   }
 }
+
+export { CREATE_ORDER_MUTATION };
